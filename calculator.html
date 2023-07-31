@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+
+
+<style>
+*{
+        padding: 0;
+        margin:0;
+    }
+    html{
+        display: flex;
+        justify-content: center;
+    }
+    body{
+        width: 40vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+       align-items: center;
+        background: linear-gradient(45deg, #0a0a0a , #314452);
+         /* background: linear-gradient(45deg ,#6f657a ,#592f53); */
+
+    }
+    .calculate{
+       
+        border: 1px solid #626f79;
+        padding:2%;
+        border-radius: 1%;
+        background: transparent;
+        box-shadow: 1px 1px 1px 2px rgb(103, 116, 127);
+       
+        justify-content: center;
+       
+    }
+    input{
+        border:none;
+        padding: 2%;
+        margin:1%;
+        height: 5vh;
+        width: 25vw;
+        background: transparent;
+        box-shadow: 1px 1px 1px 1px rgb(101, 123, 111);
+        text-align: right;
+        font-size: 4vh;
+        cursor: pointer;
+        color: beige;
+    }
+    input::placeholder{
+        color: rgb(117, 157, 201);
+    }
+   button{
+    width: 5vw;
+    height: 6vh;
+    margin: 0.5vw;
+    border-radius: 20%;
+    color: white;
+    background: transparent;
+    box-shadow: -2px -4px 1px  rgb(62, 39, 77);
+    font-size: 2vh;
+    
+   }
+   #aa{
+
+    padding: 1vw;
+   }
+   #yellow{
+    color:white;
+    font-size: 2vh;
+    background-color: rgb(254, 123, 67);
+   }
+   h6{
+    color:#626f79
+   }
+
+</style>
+<body>
+    <div class="calculate">
+
+    <input type="text" placeholder="0" id="inputb">
+   
+    <div id="aa">
+    <div>
+        <button id="yellow">AC</button>
+        <button id="yellow">DEL</button>
+        <button>+/-</button>
+        <button>/</button>
+    </div > 
+    <div >
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>*</button>
+    </div>
+    <div >
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>-</button>
+    </div>
+    <div >
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>+</button>
+    </div>
+    <div >
+        <button>%</button>
+        <button>0</button>
+        <button>.</button>
+        <button id="yellow">=</button>
+    </div>
+</div>
+        <h6>created by Sufiyan</h6>
+</div>
+
+<script>
+    let ip = document.getElementById("inputb") ;
+    let buttons = document.querySelectorAll('button');
+    var string ="";
+    let arr = Array.from(buttons);
+
+    arr.forEach( button => {
+        button.addEventListener('click', (e) =>{
+            if(e.target.innerHTML == '='){
+                string = eval(string)
+                ip.value = string
+                string = ip.value
+            }
+           else if(e.target.innerHTML == 'AC'){
+            string = ""
+            ip.value = string
+           }
+           else if(e.target.innerHTML == 'DEL'){
+                 string = string.substring(0, string.length-1)
+                 ip.value = string
+           }
+           else if (e.target.innerHTML == "+/-" ){  
+                    string = -1*string
+                    ip.value = string 
+                    string = ip.value
+                    
+           }
+           else{
+            string += e.target.innerHTML
+            ip.value = string
+            }
+        })
+    })
+
+</script>
+</body>
+</html>
